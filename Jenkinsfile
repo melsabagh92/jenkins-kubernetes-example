@@ -1,5 +1,22 @@
 pipeline {
-     agent any 
+     agent {
+        kubernetes {
+            yaml """
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              labels:
+                custom-label: k8s_minikube
+            spec:
+              containers:
+              - name: docker
+                image: docker:latest
+                command:
+                - cat
+                tty: true
+            """
+        }
+    }
     environment {
         DOCKER_IMAGE = 'melsabagh92/nodejsapp-1.33'
         K8S_NAMESPACE = 'default'

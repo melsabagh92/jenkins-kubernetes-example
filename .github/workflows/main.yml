@@ -42,6 +42,6 @@ jobs:
     - name: Deploy App on k8s
       run: |
         echo "Deploying App on k8s"
-        kubectl apply -f ./nodejsapp.yaml
+        kubectl apply -f ../../nodejsapp.yaml
       env:
         API_TOKEN: ${{ secrets.KUBERNETES_API_TOKEN }}

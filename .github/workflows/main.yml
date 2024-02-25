@@ -48,4 +48,4 @@ jobs:
     - name: Deploy App on k8s
       run: |
         echo "Deploying App on k8s"
-        kubectl apply -f $GITHUB_WORKSPACE/nodejsapp.yaml
+        kubectl apply -f ../jenkins-kubernetes-example/nodejsapp.yaml

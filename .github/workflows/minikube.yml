@@ -49,4 +49,4 @@ jobs:
 
     steps:
     - name: Set up Minikube
-      run: minikube service nodejsapp --url
+      run: minikube service nodejs-app --url

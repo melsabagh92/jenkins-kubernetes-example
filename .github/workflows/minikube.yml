@@ -1,0 +1,55 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      DOCKER_IMAGE: 'your-image-name:your-tag'
+      K8S_NAMESPACE: 'default'
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Set up Minikube
+      uses: actions/setup-minikube@v2
+      with:
+        minikube-version: latest
+        k8s-version: latest
+
+    - name: Build Docker Image
+      run: |
+        echo "Building Docker Image"
+        docker build -t $DOCKER_IMAGE .
+
+    - name: Load Docker Image into Minikube
+      run: |
+        minikube cache add $DOCKER_IMAGE
+
+    - name: Deploy to Minikube
+      run: |
+        echo "Deploying to Minikube"
+        kubectl apply -f nodejsapp.yaml
+
+  expose:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up Minikube
+      uses: actions/setup-minikube@v2
+      with:
+        minikube-version: latest
+        k8s-version: latest
+
+    - name: Expose Service
+      run: kubectl expose deployment nodejsapp --type=NodePort --port=8080
+
+    - name: Access Service
+      run: minikube service nodejsapp --url

@@ -39,6 +39,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: List Files in Working Directory
+      run: |
+       ls -al
+       ls -al ..
     - name: Deploy App on k8s
       run: |
         echo "Deploying App on k8s"

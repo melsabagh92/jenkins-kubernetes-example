@@ -42,11 +42,5 @@ jobs:
       run: |
         echo "Deploying to Minikube"
         kubectl apply -f nodejsapp.yaml
-
-  expose:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
     - name: Set up Minikube
       run: minikube service nodejs-app --url

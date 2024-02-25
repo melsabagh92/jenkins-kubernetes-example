@@ -49,13 +49,4 @@ jobs:
 
     steps:
     - name: Set up Minikube
-      uses: actions/setup-minikube@v2
-      with:
-        minikube-version: latest
-        k8s-version: latest
-
-    - name: Expose Service
-      run: kubectl expose deployment nodejsapp --type=NodePort --port=8080
-
-    - name: Access Service
       run: minikube service nodejsapp --url

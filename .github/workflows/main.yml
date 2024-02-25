@@ -33,17 +33,3 @@ jobs:
         echo "Deploying Docker Image"
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u melsabagh92 --password-stdin
         docker push $DOCKER_IMAGE
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-      with:
-       ref: main 
-    - name: Deploy App on k8s
-      run: |
-        echo "Deploying App on k8s"
-        kubectl apply -f ./nodejsapp.yaml

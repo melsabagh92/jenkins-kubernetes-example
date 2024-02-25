@@ -44,7 +44,7 @@ jobs:
     - name: List Files in Working Directory
       run: |
        ls -al
-       ls -al ..
+       ls -al ../jenkins-kubernetes-example
     - name: Deploy App on k8s
       run: |
         echo "Deploying App on k8s"

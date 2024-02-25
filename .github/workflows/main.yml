@@ -35,6 +35,7 @@ jobs:
         docker push $DOCKER_IMAGE
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:

@@ -39,8 +39,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Print Repository Path
-      run: echo "Repository path:$GITHUB_WORKSPACE"
+    - name: List Repository Contents
+      run: ls -al $GITHUB_WORKSPACE
     - name: List Files in Working Directory
       run: |
        ls -al

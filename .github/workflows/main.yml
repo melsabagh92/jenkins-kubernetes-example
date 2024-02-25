@@ -39,6 +39,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Print Repository Path
+      run: echo "Repository path: $GITHUB_WORKSPACE"
     - name: List Files in Working Directory
       run: |
        ls -al
@@ -46,6 +48,6 @@ jobs:
     - name: Deploy App on k8s
       run: |
         echo "Deploying App on k8s"
-        kubectl apply -f jenkins-kubernetes-example/nodejsapp.yaml
+        kubectl apply -f $GITHUB_WORKSPACE/nodejsapp.yaml
       env:
         API_TOKEN: ${{ secrets.KUBERNETES_API_TOKEN }}

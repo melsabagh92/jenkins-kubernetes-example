@@ -40,7 +40,7 @@ jobs:
 
     steps:
     - name: Print Repository Path
-      run: echo "Repository path: $GITHUB_WORKSPACE"
+      run: echo "Repository path:$GITHUB_WORKSPACE"
     - name: List Files in Working Directory
       run: |
        ls -al

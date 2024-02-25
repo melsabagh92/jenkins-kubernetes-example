@@ -39,6 +39,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Find File in Workspace
+      run: find $GITHUB_WORKSPACE -name "nodejsapp.yaml"
     - name: List Repository Contents
       run: ls -al $GITHUB_WORKSPACE
     - name: List Files in Working Directory

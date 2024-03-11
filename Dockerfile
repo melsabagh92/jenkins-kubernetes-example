@@ -1,4 +1,4 @@
-FROM node:14
+FROM melsabagh92/nodejsapp-1.33
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
